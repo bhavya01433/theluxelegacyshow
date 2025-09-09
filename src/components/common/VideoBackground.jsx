@@ -9,25 +9,28 @@ const VideoBackground = () => {
   };
 
   return (
-    <div className="video-container">
-      {/* Video for mobile/tablet */}
-      <video autoPlay loop muted playsInline className="video-bg">
-        <source src="/site3.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      {/* Image for desktop */}
-      <img
-        src="/images/try.JPG"
-        alt="Fashion Show Hero"
-        className="hero-bg-img"
-      />
-      <div className="video-overlay">
+    <>
+      <div className="video-container">
+        {/* Video for mobile/tablet */}
+        <video autoPlay loop muted playsInline className="video-bg">
+          <source src="/site3.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {/* Image for desktop */}
+        <img
+          src="/images/try.JPG"
+          alt="Fashion Show Hero"
+          className="hero-bg-img"
+        />
+      </div>
+      {/* Floating overlay that scrolls with page, not sticky */}
+      <div className="hero-floating-overlay">
         <div className="overlay-content">
           <h1>The Luxe Legacy Show</h1>
           {/* ...other content... */}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

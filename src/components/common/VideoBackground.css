@@ -4,15 +4,28 @@
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  /* margin-bottom: 20px; */
   font-family: "Playfair Display", serif;
   background: linear-gradient(90deg, #fffaf3 0%, #fbeee6 100%);
+}
+
+/* Scoped stacking context so only Season1 can overlap the hero */
+.hero-stack {
+  position: relative;
+  isolation: isolate; /* create new stacking context */
+}
+
+/* Keep the hero visually fixed within the stack while Season1 scrolls over it */
+.hero-stack .video-container {
+  position: sticky;
+  top: 0;
+  z-index: 1; /* behind Season1 but above page bg */
 }
 
 /* Video Background */
 .video-bg {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover; /* Ensures full coverage, less crop than contain */
@@ -21,6 +34,7 @@
   /* filter: brightness(0.96); */
   transition: filter 0.5s cubic-bezier(0.44, 1.2, 0.74, 0.59);
   background: #181818; /* Fallback color */
+  will-change: transform;
 }
 
 /* Desktop Hero Image (hidden by default, shown on desktop) */
@@ -35,7 +49,8 @@
   .hero-bg-img {
     display: block !important;
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     object-fit: cover;
@@ -44,6 +59,7 @@
     filter: brightness(0.97) contrast(1.06) saturate(1.07);
     background: #fbeee6;
     transition: filter 0.5s cubic-bezier(0.44, 1.2, 0.74, 0.59);
+    will-change: transform;
   }
 }
 
@@ -65,7 +81,8 @@
 /* Glass/Gradient Overlay */
 .video-overlay {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
 
@@ -78,6 +95,39 @@
   );
   /* backdrop-filter: blur(1px) saturate(1.09);  Gentle glass effect */
   box-shadow: 0 8px 32px 0 rgba(40, 34, 52, 0.07);
+}
+
+/* New floating overlay that scrolls with page content */
+.hero-floating-overlay {
+  position: relative;
+  margin-top: -24vh; /* start near bottom of hero where it was */
+  z-index: 5; /* above sticky media */
+  pointer-events: none;
+}
+/* Re-use .overlay-content look and placement */
+.hero-floating-overlay .overlay-content {
+  position: relative; /* not absolute, so it scrolls */
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media screen and (max-width: 900px) {
+  .hero-floating-overlay {
+    margin-top: -28vh;
+  }
+}
+@media screen and (max-width: 480px) {
+  .hero-floating-overlay {
+    margin-top: -32vh;
+  }
+}
+
+/* Keep hero media visually fixed under scrolling content */
+.video-container,
+.video-bg,
+.hero-bg-img {
+  transform: translateZ(0);
 }
 
 .overlay-content {

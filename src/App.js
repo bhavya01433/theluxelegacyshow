@@ -5,6 +5,7 @@ import VideoBackground from "./components/common/VideoBackground.jsx";
 import Contact from "./components/common/Contact";
 import About from "./components/home/About";
 // import Services from "./components/home/Services";
+import ContactTeaser from "./components/home/ContactTeaser";
 import OurPartners from "./components/home/OurPartners.jsx";
 import FounderSection from "./components/home/FounderSection.jsx";
 // import Portfolio from "./components/home/Portfolio";
@@ -28,13 +29,15 @@ function App() {
           path="/"
           element={
             <>
-              <VideoBackground />
-              <ScrollToTop />
+              <div className="hero-stack">
+                <VideoBackground />
+                <ScrollToTop />
 
-              {/* SEASON 1 Section */}
-              <section id="season1">
-                <Season1 />
-              </section>
+                {/* SEASON 1 Section */}
+                <section id="season1">
+                  <Season1 />
+                </section>
+              </div>
               {/* FOUNDER Section */}
               <section id="founder">
                 <FounderSection />
@@ -55,6 +58,7 @@ function App() {
               <section id="partners">
                 <OurPartners />
               </section>
+              <ContactTeaser />
             </>
           }
         />

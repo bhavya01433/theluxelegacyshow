@@ -1,10 +1,18 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import season1Data from "../../data/season1Data";
 import "./Season1.css";
 
 const Season1 = () => {
   const scrollContainerRef = useRef(null);
   const autoScrollActive = useRef(true);
+  const parallaxRef = useRef(null);
+  const [parallaxY, setParallaxY] = useState(0);
+  const scrollByAmount = (direction = 1) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    const amount = Math.max(320, Math.floor(container.offsetWidth * 0.7));
+    container.scrollBy({ left: direction * amount, behavior: "smooth" });
+  };
 
   useEffect(() => {
     const container = scrollContainerRef.current;
@@ -55,6 +63,25 @@ const Season1 = () => {
     };
   }, []);
 
+  // Subtle parallax effect for Season1 content overlay
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = parallaxRef.current;
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      // Calculate progress while the section is within the viewport
+      const visibleTop = Math.max(0, viewportHeight - rect.top);
+      const progress = Math.min(1, Math.max(0, visibleTop / (viewportHeight * 1.2)));
+      // Move content slightly slower than scroll for cinematic depth
+      const translateY = Math.round(progress * 16); // up to ~16px
+      setParallaxY(translateY);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   // For best seamless loop, duplicate data at least 4x
   const duplicatedData = [
     ...season1Data,
@@ -66,29 +93,14 @@ const Season1 = () => {
   return (
     <section className="season1-section">
       <div className="season1-bg-holder">
-        {/* Mobile: video background */}
-        <video
-          className="season1-bg-video"
-          autoPlay
-          loop
-          muted
-          playsInline
-          poster="images/try.JPG"
+        {/* Overlay Content over hero background */}
+        <div
+          className="season1-image-overlay"
+          ref={parallaxRef}
+          style={{ transform: `translateY(${parallaxY}px)` }}
         >
-          <source src="/site3.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        {/* Desktop: image background */}
-        <img
-          src="images/try.JPG"
-          alt="Fashion Show Season 1"
-          className="season1-bg-img"
-        />
-
-        {/* Overlay Content (scrolls over static bg) */}
-        <div className="season1-image-overlay">
           <h1 className="season1-title">SEASON 1</h1>
-          {/* <div className="season1-content">
+          <div className="season1-content">
             <h2> The Dawn of Luxe Legacy</h2>
             <p>
               Step into the debut season—where fashion’s visionaries unveil
@@ -96,7 +108,7 @@ const Season1 = () => {
               Experience the spectacle, the energy, and the timeless elegance
               that sets the Luxe Legacy apart.
             </p>
-          </div> */}
+          </div>
           <div className="season1-autoscroll">
             <div
               ref={scrollContainerRef}
@@ -105,9 +117,6 @@ const Season1 = () => {
               {duplicatedData.map((project, index) => (
                 <div className="scroll-card" key={index}>
                   <img src={project.img} alt={project.title} />
-                  <div className="card-overlay">
-                    <h4>{project.title}</h4>
-                  </div>
                 </div>
               ))}
             </div>
@@ -127,6 +136,27 @@ const Season1 = () => {
             </div>
           </div>
         </div>
+        {/* Navigation Arrows */}
+        <button
+          type="button"
+          className="carousel-arrow left"
+          onMouseEnter={() => (autoScrollActive.current = false)}
+          onMouseLeave={() => (autoScrollActive.current = true)}
+          onClick={() => scrollByAmount(-1)}
+          aria-label="Scroll left"
+        >
+          ‹
+        </button>
+        <button
+          type="button"
+          className="carousel-arrow right"
+          onMouseEnter={() => (autoScrollActive.current = false)}
+          onMouseLeave={() => (autoScrollActive.current = true)}
+          onClick={() => scrollByAmount(1)}
+          aria-label="Scroll right"
+        >
+          ›
+        </button>
       </div>
       {/* <div className="season1-content">
         <h2>Season 1: The Dawn of Luxe Legacy</h2>

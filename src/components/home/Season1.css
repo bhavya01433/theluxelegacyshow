@@ -19,62 +19,30 @@
   position: relative;
   width: 100vw;
   min-height: 100vh;
-  background: var(--bg-gradient);
-  overflow: hidden;
-  z-index: 1;
+  background: transparent; /* No own background; use hero */
+  overflow: visible;
+  z-index: 5; /* Above hero media */
   color: var(--text-white);
   font-family: var(--font-body);
+  pointer-events: auto;
 }
 
 /* Background video/image layering */
-.season1-bg-video,
-.season1-bg-img {
-  position: absolute;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  object-position: center;
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.83;
-  transition: opacity 0.6s, filter 0.6s;
-}
-.season1-bg-video {
-  filter: brightness(0.7) contrast(1.07) blur(1.5px) saturate(1.19);
-}
-.season1-bg-img {
-  filter: brightness(0.92) contrast(1.08) blur(0.5px) saturate(1.09);
-  opacity: 0.93;
-}
-@media (min-width: 1024px) {
-  .season1-bg-video {
-    display: none;
-  }
-  .season1-bg-img {
-    display: block;
-  }
-}
-@media (max-width: 1023px) {
-  .season1-bg-video {
-    display: block;
-  }
-  .season1-bg-img {
-    display: none;
-  }
+/* Remove Season1 background media completely */
+.season1-bg-holder {
+  position: relative;
 }
 
 /* Cinematic overlay to enhance atmosphere */
 .season1-image-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(10, 10, 14, 0.78) 70%,
-    rgba(36, 36, 42, 0.22) 100%
-  );
+  position: relative;
+  inset: auto;
+  background: transparent;
   z-index: 2;
-  pointer-events: none;
+
+  pointer-events: auto; /* allow interactions */
+  padding-top: 8vh;
+  padding-bottom: 8vh; /* let content start overlapping hero */
 }
 
 /* Section Heading */
@@ -89,6 +57,46 @@
   margin-bottom: 2vw;
   text-shadow: 0 8px 32px #0a0a0c, 0 2px 8px #e4d7b3;
   animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Cinematic descriptive copy */
+.season1-content {
+  width: 90vw;
+  max-width: 1100px;
+  margin: 0 auto 1.2vw auto;
+  padding: 24px 36px;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 16, 20, 0.72) 0%,
+    rgba(32, 30, 36, 0.56) 100%
+  );
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: 1.5px solid rgba(228, 215, 179, 0.55);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.45), 0 2px 20px rgba(228, 215, 179, 0.28);
+  border-radius: 22px;
+  text-align: center;
+  color: var(--text-white);
+  z-index: 3;
+  animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+.season1-content h2 {
+  font-family: var(--font-title);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  font-size: 2rem;
+  margin: 4px 0 10px 0;
+  color: #f7f3ea;
+  text-shadow: 0 6px 24px #0a0a0c, 0 2px 8px rgba(228, 215, 179, 0.9);
+}
+.season1-content p {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin: 0 auto;
+  max-width: 900px;
+  color: rgba(246, 246, 246, 0.95);
+  text-shadow: 0 1px 6px rgba(10, 10, 12, 0.55);
 }
 
 /* Carousel wrapper */
@@ -187,7 +195,7 @@
 /* Navigation Arrows */
 .carousel-arrow {
   position: absolute;
-  top: 50%;
+  top: 62%;
   transform: translateY(-50%);
   background: rgba(22, 21, 27, 0.92);
   color: var(--accent);
@@ -229,6 +237,7 @@
   align-items: stretch;
   gap: 2vw 2vw;
   z-index: 4;
+  margin-bottom: 30px;
 }
 .tag {
   display: flex;
@@ -275,6 +284,25 @@
 
 /* Responsive - Mobile */
 @media screen and (max-width: 900px) {
+  /* Descriptive copy: tablet */
+  .season1-content {
+    width: 94vw;
+    max-width: 680px;
+    margin: 0 auto 3vw auto;
+    padding: 18px 22px;
+    border-radius: 16px;
+    backdrop-filter: blur(9px) saturate(120%);
+    -webkit-backdrop-filter: blur(9px) saturate(120%);
+  }
+  .season1-content h2 {
+    font-size: 1.6rem;
+    margin: 2px 0 8px 0;
+  }
+  .season1-content p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    max-width: 620px;
+  }
   /* Section Title */
   .season1-title {
     font-size: 2.2rem;
@@ -429,6 +457,29 @@
 
 /* Ultra-mobile screens */
 @media screen and (max-width: 600px) {
+  /* Descriptive copy: mobile */
+  .season1-content {
+    width: 94vw;
+    max-width: 92vw;
+    margin: 0 auto 5vw auto;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: linear-gradient(
+      180deg,
+      rgba(16, 16, 20, 0.75) 0%,
+      rgba(32, 30, 36, 0.6) 100%
+    );
+  }
+  .season1-content h2 {
+    font-size: 1.35rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0 4px 18px #0a0a0c, 0 2px 6px rgba(228, 215, 179, 0.8);
+  }
+  .season1-content p {
+    font-size: 0.96rem;
+    line-height: 1.65;
+    max-width: 88vw;
+  }
   .season1-title {
     font-size: 3.3rem;
     margin-top: 14vw;
