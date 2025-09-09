@@ -71,14 +71,14 @@ const Season1 = () => {
           loop
           muted
           playsInline
-          poster="/season1-fallback.jpg"
+          poster="images/try.JPG"
         >
           <source src="/site3.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         {/* Desktop: image background */}
         <img
-          src="images/try.jpg"
+          src="images/try.JPG"
           alt="Fashion Show Season 1"
           className="season1-bg-img"
         />

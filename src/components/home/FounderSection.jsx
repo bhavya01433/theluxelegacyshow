@@ -2,21 +2,9 @@ import { useEffect, useRef } from "react";
 import "./FounderSection.css";
 
 const founderStory = `
-  Kshitij Mathur, the Founder and Creative Director of The Luxe Legacy Show, is a 21-year-old visionary whose journey blends literature, medicine, and entrepreneurship into a unique narrative of passion and purpose. Born in Sawai Madhopur, Rajasthan, Kshitij grew up immersed in an environment where education and storytelling were deeply valued—his mother, a Hindi and Sanskrit teacher, instilled in him the discipline of learning and the beauty of language. This influence led him to explore literature early, and by 2020, he had authored his first book, a heartfelt novel that delved into the meaning of friendship and connection.
+  Kshitij Mathur, Founder and Creative Director of The Luxe Legacy Show, is a 21-year-old visionary whose journey blends literature, medicine, and entrepreneurship into a unique narrative of passion and purpose. Born in Sawai Madhopur, Rajasthan, he was deeply inspired by his mother, a Hindi and Sanskrit teacher, who instilled in him a love for learning, language, and storytelling from an early age. By 2020, Kshitij authored his first heartfelt novel exploring the meaning of friendship and human connection.
 
-  Alongside writing, Kshitij also discovered his passion for conversations and storytelling through 
-podcasting. Over time, his podcast became a platform where some of India’s most respected voices 
-came forward to share their journeys. Among his guests were Swami Ramdev, the globally 
-renowned yoga guru and co-founder of Patanjali Ayurved, whose work has made yoga and 
-Ayurveda household practices across India; Swami Chidanand Saraswati, the President of 
-Parmarth Niketan Ashram, Rishikesh, one of the largest spiritual institutions in India and a 
-leader in environmental and humanitarian causes; Bhagwati Saraswati, a respected spiritual guide 
-known for her work in uplifting communities; and Sadhvi Ritambhara, a revered religious and 
-social leader recognized for her impactful voice in socio-spiritual movements. These conversations 
-not only expanded Kshitij’s perspective but also established him as a host capable of engaging with 
-diverse and influential personalities. By associating his name with leaders of such stature, his 
-podcast carved a unique niche, blending culture, spirituality, and thought leadership into one 
-accessible space.
+  Beyond writing, Kshitij discovered his true calling in podcasting, where his engaging conversations with India’s most respected thought leaders—Swami Ramdev, Swami Chidanand Saraswati, Bhagwati Saraswati, and Sadhvi Ritambhara—elevated his platform into a hub for culture, spirituality, and thought leadership. His ability to engage diverse and influential personalities has made The Luxe Legacy Show a unique space for inspiring narratives and meaningful dialogue.
 `;
 
 const founderImage = "images/founder.jpg";

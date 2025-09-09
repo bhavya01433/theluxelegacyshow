@@ -3,7 +3,7 @@ import "./About.css";
 const stats = [
   {
     id: 1,
-    image: "/images/Akshita.jpg",
+    image: "/images/Akshita.JPG",
     name: "Akshita Mathur",
     position: "Cofounder",
   },
@@ -21,7 +21,7 @@ const stats = [
   },
   {
     id: 4,
-    image: "/images/Prachi.jpg",
+    image: "/images/Prachi.JPG",
     name: "Prachi",
     position: "Fashion Stylist & Creative Director",
   },
