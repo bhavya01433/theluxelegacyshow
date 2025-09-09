@@ -5,7 +5,7 @@ const season1Data = [
   { img: "images/new4.JPG", title: "The Groove" },
   { img: "images/new5.JPG", title: "The Opus" },
   { img: "images/new6.JPG", title: "LineTribe" },
-  { img: "images/new7.jpg", title: "Benecci" },
+  { img: "images/new7.JPG", title: "Benecci" },
   { img: "images/new8.jpg", title: "Luxury" },
   { img: "images/new9.jpg", title: "Vision" },
   { img: "images/new10.JPG", title: "Spectra" },

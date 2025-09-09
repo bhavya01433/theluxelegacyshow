@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import season1Data from "../../data/season1Data"; // <-- updated import
+import season1Data from "../../data/season1Data";
 import "./Season1.css";
 
 const Season1 = () => {
@@ -11,7 +11,8 @@ const Season1 = () => {
     if (!container) return;
 
     let animationId;
-    const speed = 4;
+    let scrollAmount = 0;
+    const speed = 1;
 
     // Infinite auto-scroll logic
     const scrollStep = () => {
@@ -25,6 +26,7 @@ const Season1 = () => {
         container.scrollWidth - container.offsetWidth
       ) {
         container.scrollLeft = 0;
+        scrollAmount = 0;
       } else {
         container.scrollLeft += speed;
       }

@@ -22,7 +22,7 @@
 .nav a {
   color: var(--text-light);
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.1rem;
   transition: color 0.3s ease;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
@@ -31,7 +31,7 @@
 }
 
 .logo {
-  max-height: 160px;
+  max-height: 150px;
   width: auto;
   object-fit: contain;
   cursor: pointer;
@@ -80,7 +80,7 @@
     top: 70px;
     right: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(68, 68, 68, 0.7);
     backdrop-filter: blur(4px);
     flex-direction: column;
     padding: 20px 0;
@@ -89,6 +89,9 @@
     transform: translateY(-20px);
     opacity: 0;
     transition: all 0.3s ease-in-out;
+  }
+  .logo {
+    max-height: 120px;
   }
 
   .nav.active {

@@ -25,14 +25,6 @@
   color: var(--text-white);
   font-family: var(--font-body);
 }
-/* .season1-bg-holder {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-} */
 
 /* Background video/image layering */
 .season1-bg-video,
@@ -494,13 +486,6 @@
     border-radius: 9px;
     min-width: 90px;
   }
-}
-
-body {
-  background: #101014;
-  color: #f6f6f6;
-  font-family: "Montserrat", sans-serif;
-  overflow-x: hidden;
 }
 
 body {

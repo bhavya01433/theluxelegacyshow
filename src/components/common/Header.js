@@ -39,6 +39,10 @@ const Header = () => {
           Partners
         </Link>
 
+        <Link to="/#testimonial" smooth onClick={toggleMenu}>
+          News & Media
+        </Link>
+
         {/* <Link to="/contact">
           <button className="btn request-btn">Request a Quote</button>
         </Link> */}
