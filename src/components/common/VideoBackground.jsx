@@ -17,7 +17,7 @@ const VideoBackground = () => {
       </video>
       {/* Image for desktop */}
       <img
-        src="/images/try.jpg"
+        src="/images/try.JPG"
         alt="Fashion Show Hero"
         className="hero-bg-img"
       />
