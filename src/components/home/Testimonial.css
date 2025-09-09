@@ -1,0 +1,231 @@
+/* === Testimonial Section Base === */
+.testimonial-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #0a0a0a 60%, #232323 100%);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  /* text-shadow: 0 0 4px #e4d83f88, 0 0 8px #e4d83f66; */
+  font-family: "Playfair Display", serif;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, #f5e2a9, #a38323);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.testimonial-desc {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+/* === Scrollable Row === */
+.testimonial-scroll-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: visible;
+  width: 100%;
+}
+
+.testimonial-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+  white-space: nowrap;
+}
+
+.testimonial-track {
+  display: inline-flex;
+  animation: scrollLeft 50s linear infinite;
+  width: max-content;
+}
+
+.testimonial-row:nth-child(2) .testimonial-track {
+  animation: scrollRight 50s linear infinite;
+}
+
+/* === Card Base === */
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  margin: 0 15px;
+  height: 350px;
+  min-width: 400px;
+  max-width: 400px;
+  width: 400px;
+  background: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(228, 216, 63, 0.15);
+  color: #e4d83f;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 20px rgba(228, 216, 63, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+  position: relative;
+  gap: 0.5rem;
+}
+
+.quote-card {
+  text-align: center;
+  background-color: #1a1a1a;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.quote-card .quote {
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  color: #f5f5f5;
+  padding: 0 1rem;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.quote-card .author {
+  font-weight: 700;
+  color: #e4d83f;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.quote-card::before {
+  content: "“";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 4rem;
+  color: rgba(228, 216, 63, 0.08);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* === Responsive Layout === */
+@media (max-width: 768px) {
+  .testimonial-section {
+    padding: 40px 0 32px;
+  }
+
+  .testimonial-pagination-dots.pagination-below {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 16px;
+    width: 100%;
+  }
+  .testimonial-pagination-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid #e4d83f;
+    background: transparent;
+    display: inline-block;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .testimonial-pagination-dots .dot.active {
+    background: #e4d83f;
+    border-color: #e4d83f;
+  }
+  .testimonial-scroll-wrapper {
+    padding: 0 8px;
+  }
+  .testimonial-row {
+    min-height: unset;
+    padding: 18px 0;
+  }
+  .testimonial-track {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 8px;
+    animation: none !important;
+    transform: none !important;
+  }
+  .testimonial-track::-webkit-scrollbar {
+    display: none;
+  }
+  .testimonial-card {
+    min-width: 85vw;
+    max-width: 90vw;
+    width: 85vw;
+    padding: 1.5rem;
+    height: 320px;
+    margin: 0 0.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13), 0 1.5px 6px #e4d83f22;
+    border: 1.5px solid #e4d83f33;
+    background: rgba(26, 26, 26, 0.92);
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+.testimonial-card .quote {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 7.5em;
+  padding-right: 6px;
+  display: block;
+}
+
+.testimonial-card .author {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  text-align: center;
+}
+
+.testimonial-card .stars {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* === Animation Keyframes === */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}

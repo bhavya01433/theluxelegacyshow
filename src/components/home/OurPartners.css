@@ -1,0 +1,189 @@
+:root {
+  --partners-bg: #0a0a0a;
+  --partners-padding: 5vw 0 5vw 0;
+  --logo-card-size: 110px;
+  --logo-card-size-mobile: 76px;
+  --logo-radius: 20px;
+  --logo-shadow: 0 6px 28px rgba(0, 0, 0, 0.28), 0 1px 8px #151515;
+  --logo-shadow-hover: 0 12px 38px rgba(255, 255, 255, 0.14), 0 2px 12px #333;
+  --logo-bg: rgba(20, 20, 20, 0.98);
+  --logo-border: #222;
+  --logo-transition: 0.41s cubic-bezier(0.44, 1.4, 0.74, 0.59);
+  --font-title: "Playfair Display", serif;
+  --font-body: "Montserrat", sans-serif;
+  --title-size: 2.6rem;
+  --title-size-mobile: 1.45rem;
+}
+
+/* Container section */
+.partners-section {
+  width: 100vw;
+  background: var(--partners-bg);
+  padding: var(--partners-padding);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* Section Title */
+.partners-title {
+  font-family: var(--font-title);
+  font-size: var(--title-size);
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  text-align: center;
+  margin-bottom: 3vw;
+  opacity: 0;
+  transform: translateY(44px) scale(0.97);
+  transition: opacity 0.88s cubic-bezier(0.44, 1.4, 0.74, 0.59),
+    transform 0.88s cubic-bezier(0.44, 1.4, 0.74, 0.59);
+  will-change: opacity, transform;
+  text-shadow: 0 8px 38px #000, 0 2px 10px #1a1a1a;
+}
+.partners-title.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Horizontal scroll track */
+.partners-logos-track {
+  width: 100vw;
+  max-width: 1600px;
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0 4vw;
+  margin: 0 auto;
+  position: relative;
+  /* For auto-scroll animation: will-change improves performance */
+  will-change: transform;
+}
+.partners-logos-track::-webkit-scrollbar {
+  display: none;
+}
+.partners-logos-track {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Logo card style */
+.partner-logo-card {
+  flex: 0 0 auto;
+  width: var(--logo-card-size);
+  height: var(--logo-card-size);
+  min-width: var(--logo-card-size);
+  min-height: var(--logo-card-size);
+  background: var(--logo-bg);
+  border-radius: var(--logo-radius);
+  box-shadow: var(--logo-shadow);
+  border: 1.5px solid var(--logo-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-right: 2vw;
+  filter: grayscale(0.82) brightness(0.94) contrast(1.03);
+  transition: filter var(--logo-transition), box-shadow var(--logo-transition),
+    background var(--logo-transition);
+  cursor: pointer;
+  will-change: filter, box-shadow, background;
+}
+.partner-logo-card:hover,
+.partner-logo-card:focus {
+  filter: none;
+  box-shadow: var(--logo-shadow-hover);
+  background: rgba(30, 30, 30, 0.99);
+}
+
+/* Logo image */
+.partner-logo-img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  transition: filter var(--logo-transition);
+  filter: drop-shadow(0 1px 7px #111);
+  background: transparent;
+  border-radius: 10px;
+  /* Lazy loading suggestion: add "loading='lazy'" in HTML/JSX */
+}
+
+/* Responsive design */
+@media screen and (max-width: 900px) {
+  .partners-section {
+    padding: 8vw 0 8vw 0;
+  }
+  .partners-title {
+    font-size: var(--title-size-mobile);
+    margin-bottom: 7vw;
+    padding: 0 2vw;
+  }
+  .partners-logos-track {
+    gap: 4vw;
+    padding: 0 2vw;
+  }
+  .partner-logo-card {
+    width: var(--logo-card-size-mobile);
+    height: var(--logo-card-size-mobile);
+    min-width: var(--logo-card-size-mobile);
+    min-height: var(--logo-card-size-mobile);
+    border-radius: 12px;
+    margin-right: 3vw;
+  }
+  .partner-logo-img {
+    width: 70%;
+    height: 70%;
+    border-radius: 7px;
+  }
+}
+
+/* Ultra-mobile screens */
+@media screen and (max-width: 600px) {
+  .partners-section {
+    padding: 12vw 0 12vw 0;
+  }
+  .partners-title {
+    font-size: 1.08rem;
+    margin-bottom: 10vw;
+    padding: 0 3vw;
+    line-height: 1.2;
+  }
+  .partners-logos-track {
+    gap: 5vw;
+    padding: 0 1vw;
+  }
+  .partner-logo-card {
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    min-height: 58px;
+    border-radius: 8px;
+    margin-right: 3vw;
+  }
+  .partner-logo-img {
+    width: 78%;
+    height: 78%;
+    border-radius: 6px;
+  }
+}
+
+/* Animation utility: fade-in-up for section content */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(44px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

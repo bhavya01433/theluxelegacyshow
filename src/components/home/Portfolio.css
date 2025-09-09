@@ -1,0 +1,134 @@
+/* Portfolio Section */
+.portfolio-section {
+  background-color: #0d0d0d;
+  color: #ffffff;
+  padding: 60px 20px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.portfolio-heading {
+  position: relative;
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  color: #f5f5f5;
+  text-align: center;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  background: linear-gradient(to right, #f5e2a9, #a38323);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+}
+/* .portfolio-heading::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background-color: #ffcc00;
+  margin: 16px auto 0;
+  border-radius: 2px;
+  display: block;
+} */
+.portfolio-desc {
+  font-size: 1.3rem;
+  margin-top: 10px;
+}
+
+.card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  text-align: left;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.25));
+  padding: 16px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 2;
+}
+
+.card-overlay h4 {
+  font-size: 1.2rem;
+}
+
+.card-overlay p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+.horizontal-scroll-container {
+  display: flex;
+  overflow-x: scroll;
+  white-space: nowrap;
+  scroll-behavior: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 2rem 1rem;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-card {
+  flex: 0 0 auto;
+  width: 400px;
+  background-color: #1a1a1a;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+  margin-right: 1.7rem;
+}
+
+.scroll-card:hover {
+  transform: scale(1.03);
+}
+
+.scroll-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(70%);
+  transition: filter 0.3s ease;
+}
+.scroll-card:hover img {
+  filter: brightness(100%);
+}
+.swipe-indicator {
+  font-size: 1rem;
+  font-style: italic;
+  color: #aaa;
+  margin-top: 10px;
+  animation: blink 1.5s infinite;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .scroll-card:active .card-overlay {
+    background: rgba(0, 0, 0, 0.7);
+  }
+  .swipe-indicator {
+    display: block;
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
