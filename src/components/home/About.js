@@ -3,25 +3,25 @@ import "./About.css";
 const stats = [
   {
     id: 1,
-    image: "/images/Akshita.JPG",
+    image: "/images/Akshita.webp",
     name: "Akshita Mathur",
     position: "Cofounder",
   },
   {
     id: 2,
-    image: "/images/Daman.jpg",
+    image: "/images/Daman.webp",
     name: "Daman",
     position: "Show Coordinator & Model Manager",
   },
   {
     id: 3,
-    image: "/images/Ravneet.jpg",
+    image: "/images/Ravneet.webp",
     name: "Ravneet",
     position: "Fashion Choreographer & Show Director",
   },
   {
     id: 4,
-    image: "/images/Prachi.JPG",
+    image: "/images/Prachi.webp",
     name: "Prachi",
     position: "Fashion Stylist & Creative Director",
   },

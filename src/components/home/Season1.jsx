@@ -69,10 +69,14 @@ const Season1 = () => {
       const section = parallaxRef.current;
       if (!section) return;
       const rect = section.getBoundingClientRect();
-      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      const viewportHeight =
+        window.innerHeight || document.documentElement.clientHeight;
       // Calculate progress while the section is within the viewport
       const visibleTop = Math.max(0, viewportHeight - rect.top);
-      const progress = Math.min(1, Math.max(0, visibleTop / (viewportHeight * 1.2)));
+      const progress = Math.min(
+        1,
+        Math.max(0, visibleTop / (viewportHeight * 1.2))
+      );
       // Move content slightly slower than scroll for cinematic depth
       const translateY = Math.round(progress * 16); // up to ~16px
       setParallaxY(translateY);
@@ -158,15 +162,8 @@ const Season1 = () => {
           ›
         </button>
       </div>
-      {/* <div className="season1-content">
-        <h2>Season 1: The Dawn of Luxe Legacy</h2>
-        <p>
-          Step into the debut season—where fashion’s visionaries unveil dramatic
-          silhouettes, opulent textures, and avant-garde artistry. Experience
-          the spectacle, the energy, and the timeless elegance that sets the
-          Luxe Legacy apart.
-        </p>
-        <div className="season1-details">
+
+      {/*}  <div className="season1-details">
           <div className="season1-card">
             <span className="season1-label">Date</span>
             <span className="season1-value">October 10, 2025</span>

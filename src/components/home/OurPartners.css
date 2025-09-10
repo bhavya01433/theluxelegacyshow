@@ -66,6 +66,22 @@
   /* For auto-scroll animation: will-change improves performance */
   will-change: transform;
 }
+
+/* iOS-specific CSS fallback for smooth scrolling */
+@supports (-webkit-overflow-scrolling: touch) {
+  .partners-logos-track {
+    animation: scrollFallback 20s linear infinite;
+  }
+
+  @keyframes scrollFallback {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
 .partners-logos-track::-webkit-scrollbar {
   display: none;
 }
@@ -95,6 +111,8 @@
     background var(--logo-transition);
   cursor: pointer;
   will-change: filter, box-shadow, background;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .partner-logo-card:hover,
 .partner-logo-card:focus {
@@ -114,7 +132,7 @@
   filter: drop-shadow(0 1px 7px #111);
   background: transparent;
   border-radius: 10px;
-  /* Lazy loading suggestion: add "loading='lazy'" in HTML/JSX */
+ 
 }
 
 /* Responsive design */

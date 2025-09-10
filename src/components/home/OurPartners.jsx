@@ -1,37 +1,29 @@
-import React, { useEffect, useRef } from "react";
-import partnerLogos from "../../data/partnerLogos"; // Array of logo URLs
+import React, { useRef, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
+import partnerLogos from "../../data/partnerLogos";
 import "./OurPartners.css";
 
 const OurPartners = () => {
-  const trackRef = useRef(null);
-  const autoScrollActive = useRef(true);
+  const { ref: titleRef, inView: titleInView } = useInView({
+    threshold: 0.5,
+    triggerOnce: true,
+  });
 
-  // Duplicate logos for smooth infinite scroll
-  const displayedLogos = [
-    ...partnerLogos,
-    ...partnerLogos,
-    ...partnerLogos,
-    ...partnerLogos,
-    ...partnerLogos,
-    ...partnerLogos,
-    ...partnerLogos,
-    ...partnerLogos,
-    ...partnerLogos,
-  ];
+  const trackRef = useRef(null);
+
+  const displayedLogos = [...partnerLogos, ...partnerLogos];
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isIOS) return; 
+
     let animationId;
     const speed = 0.8;
 
-    // Infinite auto-scroll logic
     const scrollStep = () => {
-      if (!autoScrollActive.current) {
-        animationId = requestAnimationFrame(scrollStep);
-        return;
-      }
       if (track.scrollLeft >= track.scrollWidth - track.offsetWidth) {
         track.scrollLeft = 0;
       } else {
@@ -39,14 +31,12 @@ const OurPartners = () => {
       }
       animationId = requestAnimationFrame(scrollStep);
     };
+
     animationId = requestAnimationFrame(scrollStep);
 
-    const pauseScroll = () => {
-      autoScrollActive.current = false;
-    };
-    const resumeScroll = () => {
-      autoScrollActive.current = true;
-    };
+    // Pause on hover or touch (optional nice touch)
+    const pauseScroll = () => cancelAnimationFrame(animationId);
+    const resumeScroll = () => animationId = requestAnimationFrame(scrollStep);
 
     track.addEventListener("mouseenter", pauseScroll);
     track.addEventListener("touchstart", pauseScroll);
@@ -62,25 +52,12 @@ const OurPartners = () => {
     };
   }, []);
 
-  // Intersection Observer for fade-in title
-  useEffect(() => {
-    const titleEl = document.querySelector(".partners-title");
-    if (!titleEl) return;
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          titleEl.classList.add("in-view");
-        }
-      },
-      { threshold: 0.5 }
-    );
-    observer.observe(titleEl);
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section className="partners-section">
-      <h2 className="partners-title">OUR PARTNERS</h2>
+      <h2 ref={titleRef} className={`partners-title ${titleInView ? "in-view" : ""}`}>
+        OUR PARTNERS
+      </h2>
+
       <div className="partners-logos-track" ref={trackRef}>
         {displayedLogos.map((logo, idx) => (
           <div className="partner-logo-card" key={idx}>

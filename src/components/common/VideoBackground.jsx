@@ -12,13 +12,20 @@ const VideoBackground = () => {
     <>
       <div className="video-container">
         {/* Video for mobile/tablet */}
-        <video autoPlay loop muted playsInline className="video-bg">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="video-bg"
+        >
           <source src="/site3.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         {/* Image for desktop */}
         <img
-          src="/images/try.JPG"
+          src="/images/try.webp"
           alt="Fashion Show Hero"
           className="hero-bg-img"
         />
@@ -27,7 +34,6 @@ const VideoBackground = () => {
       <div className="hero-floating-overlay">
         <div className="overlay-content">
           <h1>The Luxe Legacy Show</h1>
-          {/* ...other content... */}
         </div>
       </div>
     </>
