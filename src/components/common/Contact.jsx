@@ -123,24 +123,20 @@ const Contact = () => {
           <div className="info-item">
             <FaPhone className="info-icon" />
             <span>
-              <a href="tel:+911234567890">+91 12345 67890</a>
+              <a href="tel:+911234567890">+91 9257526846</a>
             </span>
           </div>
           <div className="info-item">
             <FaEnvelope className="info-icon" />
             <span>
               <a href="mailto:info@yourconstruction.com">
-                info@yourconstruction.com
+                hello@theluxelegacyshow.com
               </a>
             </span>
           </div>
           <div className="info-item">
             <FaMapMarkerAlt className="info-icon" />
-            <span>
-              123 Construction Road,
-              <br />
-              Ahmedabad, Gujarat, India - 380001
-            </span>
+            <span>Jaipur, Rajasthan, India</span>
           </div>
           <div className="info-item">
             <FaClock className="info-icon" />
@@ -165,7 +161,7 @@ const Contact = () => {
             ></iframe>
           </div>
         </div>
-        <div className="faq-section">
+        {/* <div className="faq-section">
   <h2>Frequently Asked Questions</h2>
   {[
     {
@@ -196,8 +192,7 @@ const Contact = () => {
       </div>
     </div>
   ))}
-</div>
-
+</div> */}
       </section>
     </div>
   );

@@ -10,11 +10,14 @@ const ContactTeaser = () => {
       </video>
 
       <div className="contact-teaser-overlay">
-        <h2>Ready to Make It Real?</h2>
-        <p>Ideas are cheap. Execution builds empires. Let’s get to work.</p>
+        <h2>Are You Ready for Season 2?</h2>
+        <p>
+          The next chapter of avant-garde elegance. Experience the future of
+          fashion, live on the runway.
+        </p>
 
-        <Link to="/contact" className="btn">
-          Get in Touch →
+        <Link to="/" className="btn">
+          Book Now →
         </Link>
       </div>
     </section>
